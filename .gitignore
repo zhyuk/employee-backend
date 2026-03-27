@@ -1,0 +1,97 @@
+#################################################
+# OS
+#################################################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+*.icloud
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+
+#################################################
+# Node / React / Vite
+#################################################
+node_modules/
+dist/
+dist-ssr/
+build/
+coverage/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+*.local
+
+
+#################################################
+# Python / FastAPI
+#################################################
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+.venv/
+venv/
+env/
+ENV/
+
+.env
+.env.*
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+build/
+dist/
+.eggs/
+*.egg-info/
+
+instance/
+.ipynb_checkpoints
+
+
+#################################################
+# IDE / Editor
+#################################################
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.backup.*
+*.back.*
+
+
+#################################################
+# Logs
+#################################################
+logs/
+*.log
+
+
+#################################################
+# Misc
+#################################################
+*.stackdump
+*.manifest
+*.spec
