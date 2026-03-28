@@ -13,7 +13,7 @@ app.include_router(mypage.router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://employee-frontend-admin.vercel.app","http://localhost:5173"],
+    allow_origins=["https://employee-frontend-admin-git-main-zhyuks-projects.vercel.app/","http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
