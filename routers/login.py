@@ -72,3 +72,5 @@ def logout(res: Response, access_token: str = Cookie(None), refresh_token: str =
     res.delete_cookie(key="access_token")
 
     res.status_code = 200
+
+    return res
