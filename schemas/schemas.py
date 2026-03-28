@@ -16,6 +16,7 @@ class addEmployee(BaseModel):
     position: str   # 직급
     hireDate: str   # 입사일자
     phone: Optional[str] = None
+    birthday: str
 
 # === 이메일 중복검사 스키마 === #
 class verifyEmail(BaseModel):

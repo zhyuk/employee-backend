@@ -53,7 +53,8 @@ def add_employee(data: addEmployee, db: Session = Depends(get_db)):
         department = data.department,
         position = data.position,
         hireDate = data.hireDate if data.hireDate else date.today(),
-        phone = data.phone.replace("-", "") if data.phone else None
+        phone = data.phone.replace("-", "") if data.phone else None,
+        birtday = data.birthday
     )
 
     db.add(employee)
