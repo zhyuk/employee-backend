@@ -9,11 +9,14 @@ load_dotenv()
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
-DB_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-engine = create_engine(DB_URL)
+DB_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}?sslmode=require&channel_binding=require"
+engine = create_engine(
+    DB_URL,
+    pool_pre_ping=True,  # 연결 유효성을 체크 후 쿼리 실행
+    pool_recycle=3600,   # 1시간마다 연결 재사용 (연결 만료 방지)
+)
 
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False,)
 
