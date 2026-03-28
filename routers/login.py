@@ -68,9 +68,7 @@ def logout(res: Response, access_token: str = Cookie(None), refresh_token: str =
             token.is_revoked = True
             db.commit()
 
-    res.delete_cookie(key="refresh_token")
-    res.delete_cookie(key="access_token")
+    res.delete_cookie(key="refresh_token",secure=True, samesite="none", path="/")
+    res.delete_cookie(key="access_token", secure=True, samesite="none", path="/")
 
     res.status_code = 200
-
-    return res
