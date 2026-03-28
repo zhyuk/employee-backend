@@ -18,7 +18,7 @@ def get_employeeList(db: Session = Depends(get_db)):
     """
 
     # 관리자 정보는 리턴 X
-    employees = db.query(Employee).filter(Employee.role == "employee").all()
+    employees = db.query(Employee).filter(Employee.role == "employee").order_by(Employee.id.desc()).all()
 
     result = [
     {
