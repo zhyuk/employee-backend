@@ -101,12 +101,16 @@ def add_token_for_cookie(user_id: int, role: str, db: Session, response: Respons
     response.set_cookie(
         key="access_token",
         value=access_token,
-        httponly=True
+        httponly=True,
+        secure=True,       
+        samesite="none",
     )
 
     response.set_cookie(
         key="refresh_token",
         value=refresh_token,
-        httponly=True
+        httponly=True,
+        secure=True,       
+        samesite="none",
     )
 # ==================== JWT TOKENS ==================== #
