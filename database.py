@@ -86,4 +86,3 @@ def create_admin():
         db.rollback()
     finally:
         db.close()
-
