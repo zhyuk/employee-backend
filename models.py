@@ -19,7 +19,6 @@ class Employee(Base):
     role = Column(String(10), server_default="employee")    # 역할
     is_retired = Column(Boolean, default=False)  # 재직여부
     birthday = Column(Date, nullable=True)
-    checkId = Column(String(512), nullable=True)    # Background Check용
 
     tokens = relationship("JwtTokens", back_populates="employee", cascade="all, delete-orphan")
 
