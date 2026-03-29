@@ -21,15 +21,14 @@ def check_login(req: LoginForm, res: Response, db: Session = Depends(get_db)):
     로그인 API
     ----------------------------------------
     """
-
-    print(req)
+    # print(req)
 
     user = db.query(Employee).filter(Employee.email == req.email).first()
 
     if not user:
         raise HTTPException(status_code=401, detail="아직 가입된 계정이 없어요. 회원가입을 진행해 주세요.")
     if user.is_retired:
-        raise HTTPException(status_code=401, detail="퇴사처리된 계정은 사용할 수 없습니다. 관리자에게 문의하세요.")
+        raise HTTPException(status_code=403, detail="퇴사처리된 계정은 사용할 수 없습니다. 관리자에게 문의하세요.")
     else:
         if not password_decode(req.password, user.password):
             raise HTTPException(status_code=401, detail="이메일 또는 비밀번호가 올바르지 않아요.")
