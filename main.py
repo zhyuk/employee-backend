@@ -1,8 +1,10 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+from sqlalchemy.sql import text
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import create_tables, create_admin
+from database import create_tables, create_admin, get_db
 from routers import login, employee, mypage
 
 app = FastAPI()    
@@ -23,6 +25,20 @@ app.add_middleware(
 def startup_event():
     create_tables()
     create_admin()
+
+@app.get("/cron")
+async def cron_check(db: Session = Depends(get_db)):
+    """
+    ----------------------------------------
+    서버에 10분마다 호출하는 cron용 API
+    ----------------------------------------
+    """
+
+    try:
+        await db.execute(text("SELECT 1"))
+        return {"status": "ok", "database": "connected"}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}, 500
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
